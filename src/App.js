@@ -8,7 +8,18 @@ class App extends Component {
     todos: [
       {
         id:1,
-        title:'Take out the trash'
+        title:'Take out the trash',
+        completed: false
+      },
+      {
+        id:2,
+        title:'Dinner with wife',
+        completed: true
+      },
+      {
+        id:3,
+        title:'Meeting with my employee',
+        completed: false
       }
     ]
   }
@@ -20,7 +31,7 @@ class App extends Component {
     // Cannot use class atribute, use className
     return (
       <div className="App">
-        <Todos />
+        <Todos todos={this.state.todos}/>
       </div>
     );
   }
