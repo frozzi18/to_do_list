@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Header from './components/layout/Header';
 import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
 
 import './App.css';
 
@@ -24,6 +26,19 @@ class App extends Component {
     ]
   }
 
+// Toggle Complete
+  markComplete = (id) => {
+    this.setState({todos: this.state.todos.map(todo =>{
+      if(todo.id===id) {
+        todo.completed = !todo.completed
+      }
+      return todo;
+    })});
+  }
+
+  delTodo = (id) => {
+    this.setState({ todos : [...this.state.todos.filter(todo => todo.id !==id)]});
+  }
 
   render(){
     // render, lifecycle method, the only required. return jsx. Easier way to write js for output. 
@@ -31,7 +46,13 @@ class App extends Component {
     // Cannot use class atribute, use className
     return (
       <div className="App">
-        <Todos todos={this.state.todos}/>
+        <div className="container">
+          <Header />
+          <AddTodo />
+          <Todos todos={this.state.todos} markComplete = {this.markComplete}
+          delTodo={this.delTodo}/>
+        </div>
+        
       </div>
     );
   }
