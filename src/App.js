@@ -5,12 +5,19 @@ import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import About from './components/pages/About';
 import uuid from 'uuid';
+import axios from 'axios';
 
 import './App.css';
+
 
 class App extends Component {
   state = {
     todos: []
+  }
+
+  componentDidMount(){
+    axios.get('https://jsonplaceholder.typicode.com/todos')
+    .then(res => console.log(res.data))
   }
 
 // Toggle Complete
