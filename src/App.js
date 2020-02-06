@@ -40,6 +40,11 @@ class App extends Component {
     this.setState({ todos : [...this.state.todos.filter(todo => todo.id !==id)]});
   }
 
+  // Add Todo
+  addTodo = (title) => {
+    console.log(title)
+  }
+
   render(){
     // render, lifecycle method, the only required. return jsx. Easier way to write js for output. 
     // it is JSX
@@ -48,7 +53,7 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <Header />
-          <AddTodo />
+          <AddTodo addTodo={this.addTodo}/>
           <Todos todos={this.state.todos} markComplete = {this.markComplete}
           delTodo={this.delTodo}/>
         </div>
